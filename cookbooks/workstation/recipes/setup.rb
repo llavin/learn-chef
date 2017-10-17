@@ -1,11 +1,6 @@
-file '/etc/motd' do
-  content "This server is the property of llavin
-  HOSTNAME: #{node['hostname']}
-  IP ADDRESS: #{node['ipaddress']}
-  CPU: #{node['cpu']['0']['mhz']}
-  MEMORY: #{node['memory']['total']}\n"
-  owner 'root'
-  group 'root'
+template '/etc/motd' do
+  source 'motd.erb'
+  action :create
 end
 
 package 'git' do
